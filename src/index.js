@@ -15,8 +15,17 @@ module.exports = function () {
             const spaceRegExp = new RegExp(`^${rootIndent}`)
             return raw.replace(spaceRegExp, '')
           }).join('\n')
+          console.log('path',path);
+          console.log('path',path);
+          console.log('path',path);
+          console.log('path',path);
+          console.log('path',path);
+          console.log('path',path);
+          console.log('path',path);
           const html =
-            render(fixedRaw)
+            render(fixedRaw, {
+              basedir: state.opts.baseDir || '/'
+            })
               .replace(/"\{/g, '{').replace(/\}"/g, '}').replace(/\};"/g, '}')
               .replace(/class="/g, 'className="').replace(/for="/g, 'htmlFor="')
               .replace(/\\\`/g, '`')
