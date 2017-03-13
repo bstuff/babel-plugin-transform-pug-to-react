@@ -6,11 +6,6 @@
   "config": {
     "DEST": "build"
   },
-  "scripts": {
-    "build": "babel src -d $npm_package_config_DEST",
-    "prepublish": "npm run build",
-    "test": "node test/index.js"
-  },
   "author": "jigsaw (http://jgs.me)",
   "license": "MIT",
   "devDependencies": {

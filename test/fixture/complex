@@ -1,8 +1,0 @@
-pug`
-.complex(data='{yoyo}')
-  Foo(fuga='{this.props.fuga}')
-  Bar(bar='{this.props.bar}')
-  input(id='id', required)
-  label(for='id')
-  #piyo(style='{this.getStyle()}')
-`
