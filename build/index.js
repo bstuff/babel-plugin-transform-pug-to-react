@@ -22,7 +22,9 @@ module.exports = function () {
               var spaceRegExp = new RegExp('^' + rootIndent);
               return raw.replace(spaceRegExp, '');
             }).join('\n');
-            var html = render(fixedRaw).replace(/"\{/g, '{').replace(/class="([^"]+)/g, 'className={styles.$1}').replace(/for="/g, 'htmlFor="').replace(/\}"/g, '}').replace(/\};"/g, '}').replace(/\\\`/g, '`');
+            var html = render(fixedRaw, {
+              basedir: process.cwd()
+            }).replace(/"\{/g, '{').replace(/class="([^"]+)/g, 'className={styles.$1}').replace(/for="/g, 'htmlFor="').replace(/\}"/g, '}').replace(/\};"/g, '}').replace(/\\\`/g, '`');
             var _transform = transform(html, {
               presets: ['react']
             }),
