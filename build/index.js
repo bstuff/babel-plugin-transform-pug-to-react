@@ -24,7 +24,7 @@ module.exports = function () {
             }).join('\n');
             var html = render(fixedRaw, {
               basedir: process.cwd()
-            }).replace(/"\{/g, '{').replace(/class="([^"]+)/g, 'className={styles.$1}').replace(/for="/g, 'htmlFor="').replace(/\}"/g, '}').replace(/\};"/g, '}').replace(/\\\`/g, '`');
+            }).replace(/"\{/g, '{').replace(/class="([^"]+)/g, 'className={styles.$1 || \'$1\'}').replace(/for="/g, 'htmlFor="').replace(/\}"/g, '}').replace(/\};"/g, '}').replace(/\\\`/g, '`');
             var _transform = transform(html, {
               presets: ['react']
             }),
