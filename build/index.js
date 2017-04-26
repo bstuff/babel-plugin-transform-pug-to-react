@@ -6,6 +6,9 @@ var _require = require('pug'),
 var _require2 = require('babel-core'),
     transform = _require2.transform;
 
+var _require3 = require("lodash"),
+    camelCase = _require3.camelCase;
+
 module.exports = function () {
   return {
     visitor: {
@@ -24,7 +27,9 @@ module.exports = function () {
             }).join('\n');
             var html = render(fixedRaw, {
               basedir: process.cwd()
-            }).replace(/"\{/g, '{').replace(/class="([^"]+)/g, 'className={styles.$1 || \'$1\'}').replace(/for="/g, 'htmlFor="').replace(/\}"/g, '}').replace(/\};"/g, '}').replace(/\\\`/g, '`');
+            }).replace(/"\{/g, '{').replace(/class="([^"]+)/g, function(match, p1) {
+              return `className={styles.${camelCase(p1)} || '${camelCase(p1)}'}`;
+            }).replace(/for="/g, 'htmlFor="').replace(/\}"/g, '}').replace(/\};"/g, '}').replace(/\\\`/g, '`');
             var _transform = transform(html, {
               presets: ['react']
             }),
